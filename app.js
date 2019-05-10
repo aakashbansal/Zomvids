@@ -17,6 +17,7 @@ var home = require('./routes/home')
 var video = require('./routes/video')
 var user =require('./routes/user')
 var viewvideo =require('./routes/viewvideo')
+var download =require('./routes/download')
 
 const passport = require('./utils/passport')
 
@@ -71,6 +72,7 @@ app.use('/user', user)
 app.use('/filetransfer', filetransfer);
 app.use('/video', video);
 app.use('/view',viewvideo);
+app.use('/download', download);
 
 app.listen(port, () => 
           console.log(`Server running on ${port}!`));

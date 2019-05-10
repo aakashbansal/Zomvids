@@ -1,4 +1,5 @@
 const dbVideo = require("../db/video");
+const dbUser = require("../db/user");
 
 var fs = require('fs'); 
 var config=require('../config/config')
@@ -14,6 +15,18 @@ const saveVideo = (req, res) => {
         uploader:req.user.username,
         local_path: config.FILE_UPLOAD_ROOT_PATH + req.user.username 
     });
+
+    //console.log(newVideo.id)
+    dbUser.findOneAndUpdate({username:req.user.username},
+        {$push:{uploaded_videos:{
+                    video_id:newVideo.id,
+                    video_name:newVideo.video_name,
+                    size:newVideo.size
+                }
+            }
+        })
+        .then(()=>console.log("SUCCESS : VIdeo added to user uploads"))
+        .catch(()=>console.log("ERROR : Video not added to user Uploads"))
 
     console.log(JSON.stringify(newVideo))
 

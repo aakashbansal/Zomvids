@@ -20,8 +20,9 @@ const registerUser = (req, res, next) => {
         .then(_ => encryptPassAndSaveUser(newUser))
         .then(user => {
             fs.mkdirSync(config.FILE_UPLOAD_ROOT_PATH+user.username)
-            res.json({message: `Hello ${user.username}, you are now registered and can login.`})
-        })
+        //    res.json({message: `Hello ${user.username}, you are now registered and can login.`})
+            res.redirect('/user/login')
+            })
         .catch(e => next(e));
 };
 

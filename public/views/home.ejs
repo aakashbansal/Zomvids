@@ -26,13 +26,22 @@
 <br>
  
 
-<form action="/filetransfer/download" method="get">
+<!--form action="/filetransfer/download" method="get">
     <input type="submit" value="Download">
 </form>
+-->
+<div class="user">My Uploaded Videos</div>
 
-  <br>
-  <br>
-
+    <ul>
+    <% for(upload of uploads) { %>
+       <li>
+        <span><a href="http://localhost:5000/view/?link=<%=upload.video_id%>">
+          <%= upload.video_name %>
+          </a>
+         <%= upload.size/1000000 %> MB</span>
+      </li>
+    <% } %>
+    </ul>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type='text/javascript' src='js/file_upload_chunking.js'></script>
 </html>

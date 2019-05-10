@@ -17,6 +17,12 @@ const userSchema = mongoose.Schema({
     watched : [{
         video_id : String,
         continue_from: Number
+    }],
+
+    uploaded_videos:[{
+        video_id:String,
+        video_name:String,
+        size:String
     }]
     
 });

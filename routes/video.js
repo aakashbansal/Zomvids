@@ -6,7 +6,7 @@ const config=require('../config/config')
 
 const dbVideo=require('../db/video')
 
-router.route('/')
+router.route('/watch')
     .get(function (req, res) {
 
         const video_id = req.query.play;
@@ -18,8 +18,8 @@ router.route('/')
           }
 
 
-          const path = "uploads/"+req.user.username+"/"+ video.video_name;
-          const stat = fs.statSync(path)
+          const path = "uploads/"+video.uploader+"/"+ video.video_name;
+          const stat = fs.statSync(path) 
           const fileSize = stat.size
           
           const range = req.headers.range

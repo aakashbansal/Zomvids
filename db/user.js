@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-// User Schema
+// User Schema 
 const userSchema = mongoose.Schema({
 
     username: {
@@ -15,11 +15,8 @@ const userSchema = mongoose.Schema({
     },
 
     watched : [{
-        video_id :{
-            type: String,
-            complete:Boolean,
-            continue_from:Number
-        }
+        video_id : String,
+        continue_from: Number
     }]
     
 });

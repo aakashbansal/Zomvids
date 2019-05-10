@@ -17,7 +17,6 @@ var home = require('./routes/home')
 var video = require('./routes/video')
 var user =require('./routes/user')
 var viewvideo =require('./routes/viewvideo')
-var curtime=require('./routes/currenttime')
 
 const passport = require('./utils/passport')
 
@@ -72,7 +71,6 @@ app.use('/user', user)
 app.use('/filetransfer', filetransfer);
 app.use('/video', video);
 app.use('/view',viewvideo);
-app.use('/curtime', curtime)
 
 app.listen(port, () => 
           console.log(`Server running on ${port}!`));

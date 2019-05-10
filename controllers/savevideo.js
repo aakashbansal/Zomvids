@@ -1,9 +1,9 @@
 const dbVideo = require("../db/video");
 
-var fs = require('fs');
+var fs = require('fs'); 
 var config=require('../config/config')
 
-var base_url = "localhost:" + config.SERVER_PORT +"/view/?link="
+var base_url = "http://localhost:" + config.SERVER_PORT +"/view/?link="
 const saveVideo = (req, res) => {
 
     let data=req.body
@@ -11,6 +11,7 @@ const saveVideo = (req, res) => {
     const newVideo = new dbVideo({
         video_name: data.file,
         size : data.file_size,
+        uploader:req.user.username,
         local_path: config.FILE_UPLOAD_ROOT_PATH + req.user.username 
     });
 

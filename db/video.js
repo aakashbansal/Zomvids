@@ -12,7 +12,10 @@ const videoSchema = mongoose.Schema({
         type: Number, 
         default: 0
     },
-
+    uploader:{
+        type:String,
+        required:true,
+    },
     size : {
         type : Number,
         default:0

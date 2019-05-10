@@ -29,12 +29,6 @@ router.route('/upload')
         savevideo(req, res);
     }
 });
-  
-router.route('/download')
-    .get(function (req, res) {
-        //[TODO] handle error when the file is not present
-        res.download('uploads/1000M');
-    });
 
 
 module.exports = router;

@@ -9,7 +9,8 @@ router.route('/')
 .get((req,res)=>{
     res.render('viewvideo', {
         username:req.user ? req.user.username : "Guest",
-        video_link:"http://localhost:5000/video/watch/?play="+req.query.link 
+        video_link:"http://localhost:5000/video/watch/?play="+req.query.link,
+        likes:200
     })
 })
 

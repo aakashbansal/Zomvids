@@ -4,6 +4,9 @@ var router = express.Router();
 const fs = require('fs')
 const config=require('../config/config')
 
+const stream = require('stream')
+
+
 const dbVideo=require('../db/video')
 
 router.route('/watch')
@@ -39,12 +42,12 @@ router.route('/watch')
               'Content-Type': 'video/mp4',
             }
             res.writeHead(206, head);
-            file.pipe(res);
+            file.pipe(res); 
           } else {
             
             const head = {
               'Content-Length': fileSize,
-              'Content-Type': 'video/mp4',
+              'Content-Type': 'video/mp4'
             }
             res.writeHead(200, head)
           }

@@ -8,27 +8,32 @@ var stream;
 
 
 router.route('/upload')
-.post(function (req, res) {
-    
-    let data = req.body ;
-    if(data.start_loc == 0){
-      let path = config.FILE_UPLOAD_ROOT_PATH + req.user.username + "/" + data.file
-      stream = fs.createWriteStream(path)
-    }
+    .post(function (req, res) {
+        
+        let data = req.body ;
 
-    let chunk = data.file_data
-    chunk = chunk.split(';base64,')[1]
-    let buff = new Buffer(chunk, 'base64')
-  
-    stream.write(buff)
-    console.log(data.end_loc + " " + data.file_size)
-    if(parseInt(data.end_loc) < parseInt(data.file_size)){
-        res.status(206).json({done:false})
-    }
-    else{
-        savevideo(req, res);
-    }
-});
+        // initialize the stream if first chunk is received
+        if(data.start_loc == 0){
+            let path = config.FILE_UPLOAD_ROOT_PATH + req.user.username + "/" + data.file
+            stream = fs.createWriteStream(path)
+        }
+
+        // decode the chunk from base64
+        let chunk = data.file_data
+        chunk = chunk.split(';base64,')[1]
+        let buff = new Buffer(chunk, 'base64')
+    
+        stream.write(buff)
+
+        // more data needed - 206 - Partial Content
+        if(parseInt(data.end_loc) < parseInt(data.file_size)){
+            res.status(206).json({done:false})
+        }
+        else{  // Whole video is sent - save it now
+            
+            savevideo(req, res);
+        }
+    });
 
 
 module.exports = router;

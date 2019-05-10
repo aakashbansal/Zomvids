@@ -1,35 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="../style/register.css">
-  <meta charset="UTF-8">
-  <title>ZomaVids</title>
+    <meta charset="UTF-8">
+    <title>
+      ZomVids
+    </title>
 </head>
+
 <body>
    
  <div class="container user"> HI <%=username%></div>
-
-
+ 
 <form> 
 
   <div class="container">
 
-   <input id="file-upload" type="file" name="myFile" />
-   <input id="upload-button" type="submit" value="Upload a file"/>
-   <p id="upload-progress"></p>
+      <input id="file-upload" type="file" name="myFile" />
+      <input id="upload-button" type="submit" value="Upload a file"/>
+      <p id="upload-progress"></p>
    
    </div>
 
 </form>
- 
-<br>
 <br>
  
-
-<!--form action="/filetransfer/download" method="get">
-    <input type="submit" value="Download">
-</form>
--->
 <div class="user">My Uploaded Videos</div>
 
     <ul>
@@ -42,6 +38,8 @@
       </li>
     <% } %>
     </ul>
+  
+</body>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type='text/javascript' src='js/file_upload_chunking.js'></script>
 </html>

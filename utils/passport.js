@@ -1,10 +1,12 @@
 const passport = require("passport");
 const {Strategy} = require("passport-local");
+
 const dbUser = require('./../db/user');
 const {verifyPassword} = require('./password-bcrypt'); 
 
 passport.use(new Strategy(
     function (username, password, cb) {
+
         return dbUser.findOne({username: String(username).trim().toLowerCase()})
             .then(user => {
                 if (!!user) {
@@ -13,6 +15,7 @@ passport.use(new Strategy(
                         .then(_ => cb(null, user))
                         .catch(e => cb(e))
                 }
+                
                 // unauthorised if no user is found.
                 return cb(null, false)
             })

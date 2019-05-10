@@ -6,4 +6,5 @@ module.exports ={
     SECRET : 'ZomatoSecret',
     BCRYPT_SALT_ROUNDS : 10,
     FILE_UPLOAD_ROOT_PATH:'./uploads/'
+    
 }

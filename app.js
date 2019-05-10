@@ -2,14 +2,12 @@ const express = require("express");
 const app = express();
 
 const config = require('./config/config')
+const port = config.SERVER_PORT;
 
-const fs = require('fs')
 const path = require('path')
-
-var cookieParser = require('cookie-parser');
 const bodyParser= require('body-parser')
 const session = require("express-session");
-const port = config.SERVER_PORT;
+
 
 // ROUTES 
 var filetransfer = require('./routes/filetransfer')
@@ -19,8 +17,10 @@ var user =require('./routes/user')
 var viewvideo =require('./routes/viewvideo')
 var download =require('./routes/download')
 
+// Passport for authentication
 const passport = require('./utils/passport')
 
+// DB Initialisation
 const mongoose = require('mongoose')
 const db = mongoose.connection
 
@@ -41,11 +41,13 @@ db.on('error', e=>
 mongoose.connect(config.MONGO_URL, mongoOptions)
 
 
+// configuring the body parser
 app.use(bodyParser.json({limit : '10mb'}))
 app.use(bodyParser.text())
 app.use(bodyParser.urlencoded({
    limit:'10mb', extended: true
 }));
+
 
 //Express Session
 app.use(session({
@@ -60,8 +62,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//app.use(cookieParser());
 
+// public directory initialise and declaring the views engine
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'public/views'));
 app.set('view engine', 'ejs');
@@ -74,5 +76,6 @@ app.use('/video', video);
 app.use('/view',viewvideo);
 app.use('/download', download);
 
+// Starting the server
 app.listen(port, () => 
           console.log(`Server running on ${port}!`));

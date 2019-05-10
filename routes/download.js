@@ -2,8 +2,6 @@ var express = require('express');
 var router = express.Router();
 const dbVideo = require("../db/video");
 
-
-
 router.route('/')
     .get(function (req, res) {
         

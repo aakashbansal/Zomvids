@@ -33,7 +33,7 @@ Design and implement a video sharing service like youtube with the below-given f
 
 3. **Resume Video** - The previously watched video resumes from the same point at which it was left earlier. This is facilitated by storing the currently watched time of each video for each user. 
 
-Five user events are captured to store the current time of the video being watched and inform the server about the same:
+  Five user events are captured to store the current time of the video being watched and inform the server about the same:
 
 * Browser closed
 * Tab closed
@@ -44,3 +44,9 @@ Five user events are captured to store the current time of the video being watch
 4. **Share functionality** - When a video is uploaded to server, a permanent link is generated using which this video can be shared to be viewed by anyone. The user need not login/register to view videos. However, for unregistered users, current time won't be stored and video won't be resumed from last watched time.
 
 5. **Uploaded Videos List** - All the videos uploaded by the user can be seen conveniently.
+
+6. **Local File System** - Since the videos are uploaded to the local server and no third-party cloud storage is used, a local file system is designed. In this system, the videos uploaded by different users are stored in different directories as :
+
+`<path_to_project>/uploads/<username>/video_file.mp4`
+  
+  

@@ -27,7 +27,7 @@ Design and implement a video sharing service like youtube with the below-given f
 
 ## Features
 
-1. **Large File Uploads** - The project requires support for uploading files upto the size of 1 GB. So, a simple **multipart/form-data** request won't be a good choice. Instead, **chunking** is done i.e. the file is divided into fixed size chunks at the user's end and then these chunks are uploaded to server one-by-one. The server aggregates these chunks to the permanent storage thereby reducing memory footprint of both the user as well as the server.
+1. **Large Video Uploads** - The project requires support for uploading videos upto the size of 1 GB. So, a simple **multipart/form-data** request won't be a good choice. Instead, **chunking** is done i.e. the file is divided into fixed size chunks at the user's end and then these chunks are uploaded to server one-by-one. The server aggregates these chunks to the permanent storage thereby reducing memory footprint of both the user as well as the server.
 
 2. **Login and Authentication** - A new user registers with the unique username and then logins to use the platform to upload videos of his own. Registration/login is not required for **viewing** videos.
 
